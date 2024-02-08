@@ -140,8 +140,10 @@ section {
   transform: translate(-50%, -50%);
   opacity: 30%;
 }
-
-/* Checkbox CSS from uiverse.io */
+.completed .todo-text {
+  text-decoration: line-through;
+}
+/* Checkbox CSS from uiverse.io
 .container input {
   display: none;
 }
@@ -205,4 +207,4 @@ section {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */

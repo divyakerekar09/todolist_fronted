@@ -24,20 +24,21 @@ export const todoSlice = createSlice({
       const deletedItemId = action.payload;
       state.items = state.items.filter((item) => item._id !== deletedItemId);
     },
+   
   },
 });
 
 export const {
   addItemSuccess,
   getItemsSuccess,
-  editItemSuccess,
+  editItemSuccess,handleStatusSuccess,
   deleteItemSuccess,
 } = todoSlice.actions;
 
 // Async action to add an item using the API
 export const addItemAsync = (item,description) => async (dispatch) => {
   try {
-    const response = await axios.post("http://localhost:3000/api/create-item", {
+    const response = await axios.post("https://todo-list-node-u2xd.onrender.com/api/create-item", {
       item,description,
       completed: false,
     });
@@ -50,7 +51,7 @@ export const addItemAsync = (item,description) => async (dispatch) => {
 
 export const getItemAsync = () => async (dispatch) => {
   try {
-    const response = await axios.get("http://localhost:3000/api/get-all-todos");
+    const response = await axios.get("https://todo-list-node-u2xd.onrender.com/api/get-all-todos");
     const items = response.data; // Assuming the response data is an array of objects
     dispatch(getItemsSuccess(response.data));
     console.log(items);
@@ -63,7 +64,7 @@ export const getItemAsync = () => async (dispatch) => {
 export const editItemAsync = (id, item,description,) => async (dispatch) => {
   try {
     const response = await axios.put(
-      `http://localhost:3000/api/update-todo-by-id/${id}`,
+      `https://todo-list-node-u2xd.onrender.com/api/update-todo-by-id/${id}`,
       {
         item,description,
       }
@@ -73,11 +74,20 @@ export const editItemAsync = (id, item,description,) => async (dispatch) => {
     console.error("Error editing item:", error);
   }
 };
+// Async action to handle status using the API
+export const handleStatusAsync = (id) => async (dispatch, getState) => {
+  try {
+    const response = await axios.patch(`https://todo-list-node-u2xd.onrender.com/api/toggle-status/${id}`);
+    dispatch(handleStatusSuccess(response.data));
+  } catch (error) {
+    console.error("Error handling status:", error);
+  }
+};
 
 // Async action to delete an item using the API
 export const deleteItemAsync = (id) => async (dispatch) => {
   try {
-    await axios.delete(`http://localhost:3000/api/delete-one-todo/${id}`);
+    await axios.delete(`https://todo-list-node-u2xd.onrender.com/api/delete-one-todo/${id}`);
     dispatch(deleteItemSuccess(id)); 
     // Dispatch deleteItemSuccess action with the deleted item id
   } catch (error) {
