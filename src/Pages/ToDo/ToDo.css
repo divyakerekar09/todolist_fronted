@@ -1,0 +1,208 @@
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(48, 48, 48);
+}
+
+.todo-app {
+  width: 800px;
+  height: 80vh;
+  margin: 80px 0px;
+  border-radius: 15px;
+}
+
+.input-section {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin: 25px;
+}
+
+.input-section input {
+  flex-grow: 1;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  padding: 16px 25px;
+  border-radius: 30px;
+  background-color: rgb(33, 33, 33);
+  transition: background-color 0.3s ease;
+  box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+}
+
+.input-section input::placeholder {
+  color: #ddd;
+}
+
+.input-section input:focus {
+  outline: none;
+  background-color: #555;
+}
+
+.input-section button {
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  margin-left: 10px;
+  padding: 16px 23px;
+  border-radius: 20px;
+  background-color: rgb(33, 33, 33);
+  transition: background-color 0.3s ease;
+  box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+}
+
+.input-section button:hover {
+  outline: none;
+  background-color: #555;
+}
+
+.edit-input {
+  width: 90%;
+  border: none;
+  outline: none;
+  color: #fff;
+  margin-left: 8px;
+  display: inline !important;
+  background-color: #343434;
+  transition: background-color 0.3s ease;
+}
+
+.todos {
+  width: 100%;
+  height: 400px;
+  overflow-y: auto;
+  margin-top: 50px;
+  padding: 10px 5px;
+  position: relative;
+  border-radius: 30px;
+  background-color: rgb(33, 33, 33);
+  box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  padding: 7px 30px;
+  border-radius: 80px;
+  margin-bottom: 10px;
+  background-color: rgb(38 37 37);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.todo-list li:hover {
+  background-color: #343434;
+}
+
+.todo-list li:not(:hover) .edit-input {
+  background-color: rgb(38 37 37); /* Background color when not hovering over li */
+}
+
+.todo-list li span {
+  margin-left: 10px;
+  color: #fff;
+}
+
+.todo-text {
+  color: #fff;
+  font-size: 16px;
+  position: relative;
+  transition: opacity 0.5s ease;
+}
+
+.span-button {
+  padding: 5px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.span-button:hover {
+  background-color: rgb(48, 48, 48);
+  border-radius: 80px;
+  color: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.not-found {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 30%;
+}
+
+/* Checkbox CSS from uiverse.io */
+.container input {
+  display: none;
+}
+
+.container svg {
+  overflow: visible;
+  cursor: pointer;
+  height: 17px;
+  width: 17px;
+}
+
+.path {
+  fill: none;
+  stroke: white;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.container input:checked ~ svg .path {
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}
+
+.todo-text::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 0;
+  top: 50%;
+  left: 0;
+  background-color: white;
+  transition: width 0.4s ease;
+}
+
+.container input:checked ~ .todo-text::before {
+  width: 100%;
+}
+
+.container input:checked ~ .todo-text {
+  opacity: 0.5;
+}
+
+.task {
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide-down {
+  animation: slide-down 0.3s ease-in-out;
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
